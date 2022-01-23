@@ -1,12 +1,12 @@
-"""Assignment301_Goldbach_Conjecture- Python3 program
+"""Assignment301_Goldbach_Conjecture - Python3 program
 Author: Robert Mwaniki
 Date: 1/23/2022
-Youtube: 
+Youtube:
 
 I have not given or received any unauthorized assistance on this assignment.
 """
 
-# helper function 
+# helper function
 # Run time O(N^2) | space dictionary of O(N) numbers in l,h range
 def get_primes(l=4, h=100):
     """Get primes between range.
@@ -45,13 +45,11 @@ def find_matching_pair(i, primes):
     found_pair = False
     current_val = i
     while not found_pair:
-    # 4, 4- 1 = 3, 4-2 = 2    
         current_val -= 1
         possible_value = i -  current_val
         # check to see if there is a matching sum pair
         if possible_value in primes and current_val in primes:
             return possible_value, i-possible_value
-        
         # edge case, stop infinite loop
         if possible_value <= 0 or possible_value > i:
             return 0, 0
@@ -67,15 +65,13 @@ def print_error(l, h):
     print("An error has occured, confirm low and high values: {} and {}.".format(l, h))
 
 def main():
+    """Find prime sum pairs between range of numbers."""
     l = 4
     h = 100
     primes = get_primes(1, h)
-    possible_value = 1
     i = l
     while i < h:
-        found_pair = False
-        current_val = i
-        if i < 2: 
+        if i < 2:
             print_error(l, h)
         if i%2 == 0: # is even
             # find matching prime pairs
