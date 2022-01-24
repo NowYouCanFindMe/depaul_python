@@ -1,26 +1,29 @@
 """Assignment301_Goldbach_Conjecture - Python3 program
 Author: Robert Mwaniki
 Date: 1/23/2022
-Youtube:
+Youtube: https://youtu.be/1hPGyTw5avY
 
 I have not given or received any unauthorized assistance on this assignment.
 """
 
 # helper function
 # Run time O(N^2) | space dictionary of O(N) numbers in l,h range
-def get_primes(l=4, h=100):
+def get_primes(lower_bound=4, higher_bound=100):
     """Get primes between range.
+
+    :param int l: lower bound value
+    :param int h: upper bound value
 
     :Returns
     :rtype dictionary
     :returns dictionary of primes
     """
 
-    if l > h:
-        print_error(l, h)
+    if lower_bound > higher_bound:
+        print_error(lower_bound, higher_bound)
 
     primes_dict = {}
-    for num in range(l, h + 1):
+    for num in range(lower_bound, higher_bound + 1):
     # all prime numbers are greater than 1
         if num > 1:
             for i in range(2, num):
@@ -36,6 +39,9 @@ def get_primes(l=4, h=100):
 # helper function
 def find_matching_pair(i, primes):
     """Find matching prime pairs.
+
+    :param int i: current value in range loop
+    :param dict primes: dictionary of prime values
 
     :Returns
     :rtype tuple
@@ -56,23 +62,33 @@ def find_matching_pair(i, primes):
 
 # helper function
 def print_matching_pairs(i, pair_1, pair_2):
-    """Print found matching prime pairs."""
+    """Print found matching prime pairs.
+
+    :param int i: current i value in range between low and high
+    :param int pair_1: matching pair value to sum to i
+    :param int pair_2: matching pair value to sum to i
+    """
     print("{} = {} + {}".format(i, pair_1, pair_2))
 
 # helper function
-def print_error(l, h):
-    """Print generic error message."""
-    print("An error has occured, confirm low and high values: {} and {}.".format(l, h))
+def print_error(lower_bound, higher_bound):
+    """Print generic error message.
+
+    :param int l: lower bound value
+    :param int h: upper bound value
+    """
+    print("An error has occured, confirm low and "
+        "high values: {} and {}.".format(lower_bound, higher_bound))
 
 def main():
     """Find prime sum pairs between range of numbers."""
-    l = 4
-    h = 100
-    primes = get_primes(1, h)
-    i = l
-    while i < h:
+    lower_bound = 4
+    higher_bound = 100
+    primes = get_primes(1, higher_bound)
+    i = lower_bound
+    while i < higher_bound:
         if i < 2:
-            print_error(l, h)
+            print_error(lower_bound, higher_bound)
         if i%2 == 0: # is even
             # find matching prime pairs
             pair_1, pair_2 = find_matching_pair(i, primes)
