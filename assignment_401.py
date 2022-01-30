@@ -1,4 +1,4 @@
-"""Assignment401_Goldbach_Conjecture- Python3 program
+"""Assignment401_Goldbach_Deuce - Python3 program
 Author: Robert Mwaniki
 Date: 1/30/2022
 Youtube:
@@ -17,9 +17,9 @@ def get_input():
     :return sum, length
     """
     given_sum = input("Enter a 'sum' value to find: ")
-    length = input("Enter a 'length' of random numbers b/w 0 and 100:")
+    length = input("Enter a 'length' of random numbers to generate: ")
 
-    return given_sum, length
+    return int(given_sum), int(length)
 
 def generate_random_nums(length):
     """ Generate random numbers.
@@ -98,8 +98,8 @@ def binary_search(search_val, sorted_list):
 def main():
     """Main function."""
     # get user input
-    # sum, length = get_input()
-    given_sum, length = 2, 10
+    given_sum, length = get_input()
+    #given_sum, length = 20, 100
     random_list =  generate_random_nums(length)
 
     if not find_sum(given_sum, random_list):
