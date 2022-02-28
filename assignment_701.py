@@ -1,7 +1,7 @@
 """Assignment701_WarAndRandomNum - Python3 program
 Author: Robert Mwaniki
-Date:
-Youtube:
+Date: 2/21/2022
+Youtube: https://youtu.be/FS0KufNn0AQ
 
 I have not given or received any unauthorized assistance on this assignment.
 """
@@ -12,7 +12,8 @@ class WarAndPeacePseudoRandomNumberGenerator:
     """Random Number Generator from text file."""
     def __init__(self, seed):
         self.seed = seed
-        self.step = 50
+        self.step = 20
+        # height of the table
         self.bits = 32 # 32: 6, 16: 5, 8: 4
         self.char_bits = self.get_size_of_bits(self.bits)
         self.list_of_bits = []
@@ -33,7 +34,8 @@ class WarAndPeacePseudoRandomNumberGenerator:
             16: 5,
             32: 6,
             64: 7,
-            128: 8
+            128: 8,
+            256: 9
         }
         return size[bits]
 
@@ -52,7 +54,7 @@ class WarAndPeacePseudoRandomNumberGenerator:
             if char_idx == current_step:
                 binary_in_str = format(ord(self.characters_from_text[char_idx]), '08b')
                 #print(binary_in_str)
-                # N bits, bit value. i.e. 32, 6th lsb bit value
+                # N bits, bit value. i.e. 32, 6th bit value
                 val1 = int(binary_in_str[-6])
                 holder[0] = val1
                 try:
@@ -136,7 +138,7 @@ class WarAndPeacePseudoRandomNumberGenerator:
 def main():
     """Runner function."""
     seed = 1000 # starting character value
-    file_path = 'C:\\Users\\rgmwanik\\Documents\\Development\\Python\\Depaul\\depaul_python\\war-and-peace.txt'
+    file_path = 'war-and-peace.txt'
     prng = WarAndPeacePseudoRandomNumberGenerator(seed)
     prng.open_file(file_path)
     prng.random()
