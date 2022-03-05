@@ -5,29 +5,33 @@ Youtube:
 
 I have not given or received any unauthorized assistance on this assignment.
 """
-def pyramid(row, column, matrix, weight):
+matrix = [[128 for _ in range(26)] for _ in range(26)]
+def pyramid(row, column, weight, shoulders):
     """Human Pyramid
 
     :param int row: row index
     :param int column: column index
     :param float weight: supported weight
     """
-    if row > 4 or column > 4: # letter P and greater
-        return matrix
-    # update supported weight
-    print("{} {}".format(row, column))
-    curr_weight = weight + 128
-    print("Weight" + str(curr_weight))
-    matrix[row][column] += weight + 128
-    
-    #print(matrix)
- 
-    # divide weight with left and right children
-    half = matrix[row][column] //2
+    global matrix
+    if row == 0 and column == 0:
+        weight[row][column] = 0
 
-    pyramid(row+1, column, matrix, half)
-    pyramid(row+1, column+1, matrix, half)
-    return matrix
+    if row > 5 or column > 5:
+        return
+    
+
+
+    weight[row][column] += shoulders
+    pyramid(row+1, column, weight, shoulders + 64)
+    pyramid(row+1, column+1, weight, shoulders + 64)
+  
+
+  
+
+
+   
+    return weight
 
 def weight_on (r,c):
     
@@ -45,16 +49,17 @@ def main():
     """Main function."""
     num_letters = 26
     
-    matrix = [[0 for _ in range(num_letters)] for _ in range(num_letters)]
+    
+    weight = [[0 for _ in range(num_letters)] for _ in range(num_letters)]
     #print(matrix)
     weight = 128
     row = 0
     column =  0
     alpha_idx = 0 # 'A'
-    print(weight_on(4, 2))
-    # matrix = pyramid(row, column, matrix, 0)
-    # for row in matrix:
-    #     print(row)
+    #print(weight_on(4, 2))
+    matrix = pyramid(row, column, weight, 0)
+    for row in matrix:
+        print(row)
     # m = 400
     # J = 112
 
