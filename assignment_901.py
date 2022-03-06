@@ -47,16 +47,36 @@ def question_7(array):
     """
     print("Show the results of a[4 5]")
 
-    print(array[4,5])
+    print(array[4])
 
 def question_8(array):
     """Show result of a[4]"""
-
+    print("Show the result of a[4]")
     print(array[4])
 
 def question_9(array):
     """Show sum of d"""
     print(np.sum(array))
+
+def question_10(array):
+    """Show max of a"""
+    print(np.max(array))
+
+def question_11(array):
+    """Transpose array b"""
+    print(np.transpose(array))
+
+def question_12(array_1, array_2):
+    """Add two arrays"""
+    print(np.add(array_1, array_2))
+
+def question_13(array_1, array_2):
+    """Multiply two arrays"""
+    print(np.multiply(array_1, array_2))
+
+def question_14(array_1, array_2):
+    """Dot product of two arrays"""
+    print(np.dot(array_1, array_2))
 
 def main():
     """Main Runner Fucntion"""
@@ -69,42 +89,28 @@ def main():
     e = create_2d_array_from_1d(a)
 
     # show a[4,5]
-    question_7()
-
-    print(a[4, 5])
+    question_7(e)
 
     # show the results of a[4]
-    question_8()
-    print(a[4])
+    question_8(a)
 
     # show sum of d
-    question_9()
+    question_9(d)
 
     # show max of a
-    question_10()
+    question_10(a)
 
     #show the transpose of b
-    question_11())
+    question_11(b)
 
     # show the results of adding a + d
-    question_12()
+    question_12(e, d)
 
     # show the results of multiplying a and d
-    question_13()
+    question_13(e, d)
 
     # show the results of computing the dot product of a and b
-    question_14()
-
-    # 
-
-#     7. Show the results of a[4,5].
-# 8. Show the results of “a[4]”.
-# 9. Show the sum of d.
-# 10. Show the max of a.
-# 11. Show the transpose of b.
-# 12. Show the results of adding a and d.
-# 13. Show the results of multiplying a and d.
-# 14. Show the results of computing the dot product of a and d.
+    question_14(e, b)
 
     print(e)
 if __name__ == "__main__":
