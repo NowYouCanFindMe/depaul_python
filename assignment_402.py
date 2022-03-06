@@ -1,68 +1,61 @@
 """Assignment402_Human_Pyramid - Python3 program
 Author: Robert Mwaniki
 Date: 1/30/2022
-Youtube:
+Youtube: https://youtu.be/AI1WFTFiuTw
 
 I have not given or received any unauthorized assistance on this assignment.
 """
-matrix = [[128 for _ in range(26)] for _ in range(26)]
-def pyramid(row, column, weight, shoulders):
-    """Human Pyramid
 
+def pyramid (given_weight, row, column):
+    """Pyramid of supported weights.
+
+    :param int given_weight: 128
     :param int row: row index
     :param int column: column index
-    :param float weight: supported weight
     """
-    global matrix
-    if row == 0 and column == 0:
-        weight[row][column] = 0
-
-    if row > 5 or column > 5:
-        return
-    
-
-
-    weight[row][column] += shoulders
-    pyramid(row+1, column, weight, shoulders + 64)
-    pyramid(row+1, column+1, weight, shoulders + 64)
-  
-
-  
-
-
-   
-    return weight
-
-def weight_on (r,c):
-    
-    second_person = 128 #finds out if there is a second person on top or not
-    if c - 1 < 0 or c > r - 1 :
-        second_person = 0
-    if c < 0 or c > r:
+    additional_weight = 128
+    if column >= row or column <= 0:
+        additional_weight = 0
+    if row <= 0 or column < 0 or column > row:
         return 0
-    elif r <= 0:
-        return 0
-    else:
-        return (second_person + 128 + weight_on (r - 1,c - 1) + weight_on (r - 1,c))/2
+
+    # pylint: disable=line-too-long
+    return (additional_weight + given_weight + pyramid (given_weight, row - 1, column - 1) + pyramid (given_weight, row - 1,column))/2
+#pylint: enable=line-too-long
+def print_all_weights():
+    """Print all weights."""
+    letters = {'a': (0,0), 'b': (1,0), 'c': (1,1), 'd': (2,0),
+               'e': (2,1), 'f': (2,2), 'g': (3,0), 'h': (3,1),
+               'i': (3,2), 'j': (3,3), 'k': (4,0), 'l': (4,1),
+               'm': (4,2), 'n': (4,3), 'o': (4,4)}
+    for letter in letters:
+        print("\t" + letter, end=" - ")
+        print(pyramid(128, letters[letter][0], letters[letter][1]))
+
+def get_input():
+    """Get input from user.
+
+    Returns:
+    :rtype: tuple
+    :return: row, column values
+    """
+    user_input = input("Enter row, column values: ")
+    row, column = user_input.split(",")
+    return int(row), int(column)
 
 def main():
     """Main function."""
-    num_letters = 26
-    
-    
-    weight = [[0 for _ in range(num_letters)] for _ in range(num_letters)]
-    #print(matrix)
-    weight = 128
-    row = 0
-    column =  0
-    alpha_idx = 0 # 'A'
-    #print(weight_on(4, 2))
-    matrix = pyramid(row, column, weight, 0)
-    for row in matrix:
-        print(row)
-    # m = 400
-    # J = 112
+
+    print("*" * 60)
+    print("Welcome!\nLetters")
+    print_all_weights()
+    print("\nEnter row and column values '0, 0' to get supported weight.")
+    print("*" * 60)
+
+    row, column = get_input()
+    print("Weight supported: ", end=" ")
+    print(pyramid(128, row, column))
+
 
 if __name__ == "__main__":
     main()
-

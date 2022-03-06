@@ -1,7 +1,7 @@
 """Assignment401_Goldbach_Deuce - Python3 program
 Author: Robert Mwaniki
 Date: 1/30/2022
-Youtube:
+Youtube: https://youtu.be/SLuzAdbog9g
 
 I have not given or received any unauthorized assistance on this assignment.
 """
