@@ -1,0 +1,7 @@
+weeks = 500
+n_thieves = 7
+heist_coef = 1000
+promotion_wealth = 1000000
+n_detetectives = 3
+solve_init = 0.25
+solve_cap = 0.75 
